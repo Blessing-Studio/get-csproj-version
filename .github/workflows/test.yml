@@ -21,5 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: ./
+      id: getversion
       with:
-        milliseconds: 1000
+        file: "wonderlab/wonderlab.csproj"
+    - name: print version
+      run: echo ${{  steps.getversion.version  }}

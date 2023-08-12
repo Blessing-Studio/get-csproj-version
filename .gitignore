@@ -2,6 +2,7 @@ node_modules/
 
 # Editors
 .vscode/
+.vs/
 .idea/
 *.iml
 

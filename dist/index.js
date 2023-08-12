@@ -2835,23 +2835,29 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(186);
-const wait = __nccwpck_require__(258);
+const fs = __nccwpck_require__(147);
 
 
 // most @actions toolkit packages have async methods
 async function run() {
-  try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
-
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
-
-    core.setOutput('time', new Date().toTimeString());
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+    try {
+        var fileData = fs.readFileSync(core.getInput("file")).toString();
+        console.log("file data: \n" + fileData);
+        var re = new RegExp("(([0-9]+)\.*)+(-?((pre)?(view)?(release)?)|(git)?)\.?(([0-9]+)\.*)+");
+        var result = fileData.match(re);
+        if (result != null) {
+            core.setOutput("version", result.at(0).replace("</Version>", ""));
+        }
+        else {
+            core.setFailed("未找到版本信息"); // 报错
+        }
+        // Get the JSON webhook payload for the event that triggered the workflow
+        // 触发工作流完成钩子
+        const payload = JSON.stringify(github.context.payload, undefined, 2)
+        console.log(`The event payload: ${payload}`);
+    } catch (error) {
+        core.setFailed(error.message); // 报错
+    }
 }
 
 run();
