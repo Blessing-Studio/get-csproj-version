@@ -2846,7 +2846,7 @@ async function run() {
         var re = new RegExp("(([0-9]+)\.*)+(-?((pre)?(view)?(release)?)|(git)?)\.?(([0-9]+)\.*)+");
         var result = fileData.match(re);
         if (result != null) {
-            core.setOutput("version", result.at(0).replace("</Version>", ""));
+            setOutput("version", result.at(0).replace("</Version>", ""));
             console.log("版本是"+result.at(0).replace("</Version>", ""));
         }
         else {
