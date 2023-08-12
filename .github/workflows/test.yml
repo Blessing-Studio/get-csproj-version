@@ -25,4 +25,4 @@ jobs:
       with:
         file: "wonderlab/wonderlab.csproj"
     - name: print version
-      run: echo ${{  steps.getversion.version  }}
+      run: echo ${{  steps.getversion.outputs.version  }}
