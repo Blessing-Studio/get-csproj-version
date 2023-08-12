@@ -1,5 +1,5 @@
 {
-  "name": "get-csharp-version",
+  "name": "get-csproj-version",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Blessing-studio/get-csharp-version.git"
+    "url": "git+https://github.com/Blessing-studio/get-csproj-version.git"
   },
   "keywords": [
     "GitHub",
@@ -22,9 +22,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Blessing-studio/get-csharp-version/issues"
+    "url": "https://github.com/Blessing-studio/get-csproj-version/issues"
   },
-  "homepage": "https://github.com/Blessing-studio/get-csharp-version#readme",
+  "homepage": "https://github.com/Blessing-studio/get-csproj-version#readme",
   "dependencies": {
     "@actions/core": "^1.10.0"
   },
