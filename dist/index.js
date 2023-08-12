@@ -2839,14 +2839,14 @@ const fs = __nccwpck_require__(147);
 
 
 // most @actions toolkit packages have async methods
-async function run() {
+function run() {
     try {
         var fileData = fs.readFileSync(core.getInput("file")).toString();
         console.log("file data: \n" + fileData);
         var re = new RegExp("(([0-9]+)\.*)+(-?((pre)?(view)?(release)?)|(git)?)\.?(([0-9]+)\.*)+");
         var result = fileData.match(re);
         if (result != null) {
-            setOutput("version", result.at(0).replace("</Version>", ""));
+            core.setOutput("version", result.at(0).replace("</Version>", ""));
             console.log("版本是"+result.at(0).replace("</Version>", ""));
         }
         else {
