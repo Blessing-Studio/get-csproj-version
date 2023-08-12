@@ -2847,6 +2847,7 @@ async function run() {
         var result = fileData.match(re);
         if (result != null) {
             core.setOutput("version", result.at(0).replace("</Version>", ""));
+            console.log("版本是"+result.at(0).replace("</Version>", ""));
         }
         else {
             core.setFailed("未找到版本信息"); // 报错
