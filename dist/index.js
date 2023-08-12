@@ -2849,14 +2849,10 @@ async function run() {
             core.setOutput("version", result.at(0).replace("</Version>", ""));
         }
         else {
-            core.setFailed("Î´ÕÒµ½°æ±¾ĞÅÏ¢"); // ±¨´í
+            core.setFailed("æœªæ‰¾åˆ°ç‰ˆæœ¬ä¿¡æ¯"); // æŠ¥é”™
         }
-        // Get the JSON webhook payload for the event that triggered the workflow
-        // ´¥·¢¹¤×÷Á÷Íê³É¹³×Ó
-        const payload = JSON.stringify(github.context.payload, undefined, 2)
-        console.log(`The event payload: ${payload}`);
     } catch (error) {
-        core.setFailed(error.message); // ±¨´í
+        core.setFailed(error.message); // æŠ¥é”™
     }
 }
 
